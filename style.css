@@ -1,0 +1,408 @@
+/* ─── Google Fonts ─────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Playfair+Display:wght@700;900&display=swap');
+
+/* ─── Variables ─────────────────────────────────────── */
+:root {
+  --bg:        #0d0d0d;
+  --surface:   #141414;
+  --border:    #2a2a2a;
+  --accent:    #e8c84a;        /* warm gold */
+  --accent2:   #c0392b;        /* punchy red */
+  --text:      #f0ece2;
+  --muted:     #888070;
+  --font-disp: 'Bebas Neue', 'Playfair Display', serif;
+  --font-body: 'DM Mono', monospace;
+  --radius:    2px;
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Reset ─────────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ─── Body ──────────────────────────────────────────── */
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 79px,
+      rgba(255,255,255,0.025) 80px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 79px,
+      rgba(255,255,255,0.025) 80px
+    );
+  min-height: 100vh;
+}
+
+/* ─── Header ─────────────────────────────────────────── */
+header {
+  background: var(--surface);
+  padding: 0 40px;
+  border-bottom: 3px solid var(--accent);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* ─── Nav ────────────────────────────────────────────── */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+/* ─── Logo ───────────────────────────────────────────── */
+#logo {
+  font-family: var(--font-disp);
+  font-size: 32px;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 4px;
+  position: relative;
+  transition: color var(--transition);
+}
+
+#logo::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent2);
+  transition: width var(--transition);
+}
+
+#logo:hover {
+  color: var(--text);
+}
+
+#logo:hover::after {
+  width: 100%;
+}
+
+/* ─── Menu ───────────────────────────────────────────── */
+.menu {
+  display: flex;
+  list-style: none;
+  gap: 0;
+}
+
+/* ─── Links ──────────────────────────────────────────── */
+.menu li a {
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 10px 18px;
+  display: block;
+  position: relative;
+  transition: color var(--transition);
+}
+
+.menu li a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  background: var(--accent);
+  transition: height var(--transition);
+}
+
+/* ─── Hover ──────────────────────────────────────────── */
+.menu li a:hover {
+  color: var(--bg);
+}
+
+.menu li a:hover::before {
+  height: 100%;
+}
+
+.menu li a span,
+.menu li a {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Content ────────────────────────────────────────── */
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 40px;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ─── Text ───────────────────────────────────────────── */
+#text {
+  flex: 1;
+}
+
+#text h1 {
+  font-family: var(--font-disp);
+  font-size: 72px;
+  line-height: 0.95;
+  margin-bottom: 24px;
+  color: var(--text);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+#text h1::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 4px;
+  background: var(--accent);
+  margin-bottom: 16px;
+}
+
+#text p {
+  font-size: 14px;
+  color: var(--muted);
+  max-width: 440px;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* ─── Image ──────────────────────────────────────────── */
+#img {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+#img::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: calc(50% - 128px);
+  width: 280px;
+  height: 100%;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  z-index: 0;
+  transition: transform var(--transition);
+}
+
+#img img {
+  width: 280px;
+  border-radius: var(--radius);
+  position: relative;
+  z-index: 1;
+  filter: grayscale(20%) contrast(1.05);
+  transition: transform var(--transition), filter var(--transition);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+}
+
+#img img:hover {
+  transform: translate(-6px, -6px);
+  filter: grayscale(0%) contrast(1.1);
+}
+
+#img:hover::before {
+  transform: translate(6px, 6px);
+}
+
+/* ─── Shared Button Base ─────────────────────────────── */
+#btn,
+#btn2,
+#clearbtn,
+#showbtn {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 12px 28px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: color var(--transition), background var(--transition);
+  outline: none;
+}
+
+#btn::after,
+#btn2::after,
+#clearbtn::after,
+#showbtn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent2);
+  transform: translateX(-101%);
+  transition: transform var(--transition);
+  z-index: 0;
+}
+
+#btn span,
+#btn2 span,
+#clearbtn span,
+#showbtn span {
+  position: relative;
+  z-index: 1;
+}
+
+#btn:hover,
+#btn2:hover,
+#clearbtn:hover,
+#showbtn:hover {
+  color: var(--text);
+}
+
+#btn:hover::after,
+#btn2:hover::after,
+#clearbtn:hover::after,
+#showbtn:hover::after {
+  transform: translateX(0);
+}
+
+#btn:active,
+#btn2:active,
+#clearbtn:active,
+#showbtn:active {
+  transform: scale(0.97);
+}
+
+/* ─── Result ─────────────────────────────────────────── */
+#result {
+  margin-top: 28px;
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  font-family: var(--font-body);
+  letter-spacing: 0.5px;
+}
+
+/* ─── Input ──────────────────────────────────────────── */
+#input {
+  margin-top: 24px;
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 1px;
+  border: 1px solid var(--border);
+  border-bottom: 2px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+  transition: border-color var(--transition), background var(--transition);
+  width: 100%;
+  max-width: 360px;
+}
+
+#input::placeholder {
+  color: var(--muted);
+}
+
+#input:focus {
+  border-bottom-color: var(--accent2);
+  background: #1c1c1c;
+}
+
+/* ─── List ─────────────────────────────────────────── */
+#list {
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--text);
+  font-family: var(--font-body);
+  padding: 20px;
+  border-left: 3px solid var(--accent);
+  background: var(--surface);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  letter-spacing: 0.5px;
+  min-height: 40px;
+}
+
+/* ─── Tablet ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 24px;
+  }
+
+  #text h1 {
+    font-size: 52px;
+  }
+
+  #text h1::before {
+    margin: 0 auto 16px auto;
+  }
+
+  #text p {
+    max-width: 100%;
+  }
+
+  #img::before {
+    left: calc(50% - 128px);
+  }
+}
+
+/* ─── Mobile ─────────────────────────────────────────── */
+@media (max-width: 480px) {
+  header {
+    padding: 0 20px;
+  }
+
+  nav {
+    flex-direction: column;
+    height: auto;
+    padding: 16px 0;
+    gap: 12px;
+  }
+
+  .menu {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .menu li a {
+    font-size: 10px;
+    padding: 8px 10px;
+  }
+
+  #text h1 {
+    font-size: 40px;
+  }
+
+  #img img {
+    width: 200px;
+  }
+
+  #img::before {
+    left: calc(50% - 88px);
+    width: 200px;
+  }
+}
